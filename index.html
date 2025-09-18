@@ -265,11 +265,20 @@
 
         // --- Authentication ---
         onAuthStateChanged(auth, user => {
-            if (user && window.location.hash === '#admin') {
+            if (window.location.hash !== '#admin') {
+                // If we're not on the admin page, do nothing.
+                // handleRouting takes care of showing/hiding the entire panel.
+                return;
+            }
+
+            // We are on the admin page, so manage the views.
+            if (user) {
+                // User is logged in, show dashboard
                 loginView.style.display = 'none';
                 dashboardView.style.display = 'block';
                 loadAdminDashboard();
             } else {
+                // User is not logged in, show login form
                 loginView.style.display = 'block';
                 dashboardView.style.display = 'none';
             }
@@ -528,4 +537,5 @@
 
 </body>
 </html>
+
 
