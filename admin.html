@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu Admin</title>
+  <link rel="stylesheet" href="web/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Admin</h1>
+      <span class="badge">Manage Menu</span>
+      <div style="margin-left:auto"><a href="index.html" class="muted">View public menu</a></div>
+    </div>
+
+    <div id="authed" style="display:none">
+      <div class="section card">
+        <h3 style="margin-top:0">Restaurant Settings</h3>
+        <div class="grid">
+          <div>
+            <label>Restaurant Name</label>
+            <input class="input" id="restoNameInput" placeholder="e.g., Paragraph Bistro">
+            <div class="flex">
+              <button class="button" id="saveSettingsBtn">Save</button>
+              <button class="button secondary" id="signOutBtn">Sign out</button>
+            </div>
+          </div>
+          <div>
+            <label>Hero Image</label>
+            <input type="file" id="heroFile" accept="image/*">
+            <div class="flex">
+              <button class="button" id="uploadHeroBtn">Upload</button>
+              <span class="muted" id="heroStatus"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h3 style="margin-top:0">Add Menu Item</h3>
+        <div class="grid">
+          <div>
+            <label>Name</label><input class="input" id="name">
+            <label>Description</label><textarea class="input" id="description" rows="3"></textarea>
+            <label>Category</label><input class="input" id="category" placeholder="e.g., Salads, Mains">
+          </div>
+          <div>
+            <label>Price</label><input class="input" id="price" type="number" step="0.01">
+            <label>Sort Weight (optional)</label><input class="input" id="sort" type="number" value="0">
+            <label>Photo (optional)</label><input type="file" id="photo" accept="image/*">
+          </div>
+        </div>
+        <div class="flex">
+          <button class="button" id="addBtn">Add Item</button>
+          <span class="muted" id="addStatus"></span>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h3 style="margin-top:0">Items</h3>
+        <table class="table" id="itemsTable">
+          <thead>
+            <tr><th>Name</th><th>Category</th><th>Price</th><th>Avail.</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="section card">
+        <h3 style="margin-top:0">QR Code for Guests</h3>
+        <div class="qr-box">
+          <div>
+            <label>Public URL to encode</label>
+            <input class="input" id="qrUrl" placeholder="https://yourdomain.example/index.html">
+            <div class="flex">
+              <button class="button" id="makeQrBtn">Generate</button>
+              <button class="button secondary" id="downloadQrBtn">Download PNG</button>
+            </div>
+          </div>
+          <div class="qr" id="qrcode"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="auth" class="card auth">
+      <h3 style="margin-top:0">Sign in</h3>
+      <label>Email</label><input class="input" id="email" type="email" placeholder="you@company.com">
+      <label>Password</label><input class="input" id="password" type="password">
+      <div class="flex">
+        <button class="button" id="signInBtn">Sign in</button>
+        <span class="muted" id="authStatus"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightweight QRCode library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-M6tR8Z0X2MKOvC3Ff2qk3+fD8Q2o2V6Qn3u6sJZ7F3e5z5mQmK0JwQmVdYx3P2Qm2uZpJfR0k+3q9M9s7Y4/0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="web/admin.js"></script>
+</body>
+</html>
